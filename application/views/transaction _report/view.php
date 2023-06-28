@@ -51,20 +51,19 @@
     <tbody>
 	
         <?php
-				if(empty($stockReport)){ echo "<tr><th colspan='10' class='text-center'>Data Not Found</th></tr>"; };
-
+		if(empty($stockReport)){ echo "<tr><th colspan='10' class='text-center'>Data Not Found</th></tr>"; };
 		foreach ($stockReport as $index => $item): ?>
             <tr>
                 <td><?php echo $index + 1; ?></td>
+				<td><?php echo date("d-m-Y", strtotime($item['date']));?></td>
+                <td><?php echo $item['seller']; ?></td>
+                <td><?php echo $item['buyer']; ?></td>
                 <td><?php echo $item['qty']; ?></td>
-                <td><?php echo $item['product_name']; ?></td>
-                <td><?php echo $item['opening']; ?></td>
+                <td><?php echo $item['qty']; ?></td>
+                <td><?php echo $item['rate']; ?></td>
                 <td><?php echo $item['total_purchase']; ?></td>
                 <td><?php echo $item['total_sale']; ?></td>
-                <td><?php echo $item['stock']; ?></td>
-                <td><?php echo $item['total_purchase']; ?></td>
                 <td><?php echo $item['total_sale']; ?></td>
-                <td><?php echo $item['stock']; ?></td>
             </tr>
         <?php endforeach; ?>
     </tbody>

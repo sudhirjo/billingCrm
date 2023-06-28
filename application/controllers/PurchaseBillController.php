@@ -38,7 +38,8 @@ class PurchaseBillController extends CI_Controller {
             'seller_id' => $this->input->post('seller_id'),
             'purchaser_id' => $this->input->post('purchaser_id'),
             'rate' => $this->input->post('rate'),
-            'gst' => $this->input->post('gst'),
+            'quantity' => $this->input->post('quantity'),
+			'gst' => $this->input->post('gst'),
             'total' => $this->input->post('total')
         );
 

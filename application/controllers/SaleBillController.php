@@ -20,12 +20,14 @@ class SaleBillController extends CI_Controller {
 	public function get_product_data(){
 	$product_id= $this->input->post('product_id');
 	$rate = $this->ProductModel->getProductDetail($product_id);	
+	$qty = $this->SaleBillModel->getProductQty($product_id);	
+
 	// Perform GST calculation based on the rate set in the product
         $gst = $rate[0]->gst_rate * 0.18; // Assuming GST rate is 18%
         // Return the GST value as JSON response
         $this->output
             ->set_content_type('application/json')
-            ->set_output(json_encode(['gst' => $gst]));
+            ->set_output(json_encode(['gst' => $gst,'qty'=>$qty->qty]));
 	}
 
     public function store() {
@@ -35,6 +37,7 @@ class SaleBillController extends CI_Controller {
             'customer_id' => $this->input->post('customer_id'),
             'purchaser_id' => $this->input->post('purchaser_id'),
             'rate' => $this->input->post('rate'),
+			'quantity' => $this->input->post('quantity'),
             'gst' => $this->input->post('gst'),
             'total' => $this->input->post('total')
         );

@@ -38,7 +38,10 @@
 <div class="form-group">
     <label for="rate">Rate:</label>
     <input type="text" name="rate" id="rate" required>
-
+	
+	<label for="quantity">Quantity:</label>
+    <input type="text" name="quantity" id="quantity" required>
+	
     <label for="gst">GST:</label>
     <input type="text" name="gst" id="gst" readonly >
 
@@ -59,6 +62,7 @@
 			<th>Costomer</th>
             <th>Purchaser</th>
             <th>Rate</th>
+			<th>Qty</th>
 			<th>Gst</th>
 			<th>Total</th>
         </tr>
@@ -76,6 +80,7 @@
                 <td><?php echo $item['customer_name']; ?></td>
 				<td><?php echo $item['purchaser_name']; ?></td>
                 <td><?php echo $item['rate']; ?></td>
+				<td><?php echo $item['quantity']; ?></td>
 			    <td><?php echo $item['gst']; ?></td>
 				<td><?php echo $item['total']; ?></td>
 
@@ -92,10 +97,11 @@
 
 <script>
         $(document).ready(function() {
-            $('#rate').on('change', function(event) {
+            $('#quantity').on('change', function(event) {
                 event.preventDefault();
-                var product_id = parseFloat($('#product_id').val());
+                var product_id = $('#product_id').val();
 				 var rate = parseFloat($('#rate').val());
+				 var quantity = parseInt($('#quantity').val());
                 $.ajax({
                     url: '<?php echo base_url("SaleBillController/get_product_data"); ?>',
 					type: 'post',
@@ -103,8 +109,12 @@
                     dataType: 'json',
                     success: function(response) {
                         // Update the GST and Total fields with the calculated values
+					if(quantity >= response.qty ){ 
+						alert('not more than : '+ response.qty);
+						$('#quantity').val('');						
+						}else{
                         $('#gst').val(response.gst.toFixed(2));
-                        $('#total').val((rate + response.gst).toFixed(2));
+                        $('#total').val((quantity * rate + response.gst).toFixed(2));};
                     }
                 });
             });
