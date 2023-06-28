@@ -35,6 +35,7 @@ CREATE TABLE purchase_bills (
     rate DECIMAL(10,2) NOT NULL,
     gst DECIMAL(10,2) NOT NULL,
     total DECIMAL(10,2) NOT NULL,
+	quantity int(11) NOT NULL,
     FOREIGN KEY (product_id) REFERENCES products(id),
     FOREIGN KEY (seller_id) REFERENCES sellers(id),
     FOREIGN KEY (purchaser_id) REFERENCES purchasers(id)
@@ -49,6 +50,7 @@ CREATE TABLE sale_bills (
     rate DECIMAL(10,2) NOT NULL,
     gst DECIMAL(10,2) NOT NULL,
     total DECIMAL(10,2) NOT NULL,
+	quantity int(11) NOT NULL,
     FOREIGN KEY (product_id) REFERENCES products(id),
     FOREIGN KEY (purchaser_id) REFERENCES purchasers(id),
     FOREIGN KEY (customer_id) REFERENCES customers(id)
