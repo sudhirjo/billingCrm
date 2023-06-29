@@ -55,3 +55,9 @@ CREATE TABLE sale_bills (
     FOREIGN KEY (purchaser_id) REFERENCES purchasers(id),
     FOREIGN KEY (customer_id) REFERENCES customers(id)
 );
+
+
+
+ALTER TABLE `sale_bills` ADD `type` VARCHAR(11) NOT NULL DEFAULT 'Purchase' AFTER `quantity`; 
+ALTER TABLE `purchase_bills` ADD `type` VARCHAR(11) NOT NULL DEFAULT 'Sale' AFTER `quantity`; 
+
