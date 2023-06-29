@@ -14,7 +14,7 @@ class ReportModel extends CI_Model {
 			$this->db->where('pb.date <=', $toDate);
 			}
 			if(!empty($productId)){		
-			$this->db->where('pb.id =', $productId);
+			$this->db->where('p.id', $productId);
 			}
 			$this->db->group_by('p.id');
 	return $this->db->get()->result_array();
@@ -36,7 +36,7 @@ class ReportModel extends CI_Model {
 			$this->db->where('pb.date <=', $toDate);
 			}
 			if(!empty($productId)){		
-				$this->db->where('pb.id =', $productId);
+				$this->db->where('p.id', $productId);
 			}
 			$this->db->group_by('p.id');
 	return $this->db->get()->result_array();
