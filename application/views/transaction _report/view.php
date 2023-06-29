@@ -55,15 +55,15 @@
 		foreach ($stockReport as $index => $item): ?>
             <tr>
                 <td><?php echo $index + 1; ?></td>
-				<td><?php echo date("d-m-Y", strtotime($item['date']));?></td>
+				<td><?php echo date("d-m-Y", strtotime($item['bill_date']));?></td>
                 <td><?php echo $item['seller']; ?></td>
                 <td><?php echo $item['buyer']; ?></td>
-                <td><?php echo $item['qty']; ?></td>
-                <td><?php echo $item['qty']; ?></td>
+                <td><?php echo $item['type']; ?></td>
+                <td><?php echo $item['quantity']; ?></td>
                 <td><?php echo $item['rate']; ?></td>
-                <td><?php echo $item['total_purchase']; ?></td>
-                <td><?php echo $item['total_sale']; ?></td>
-                <td><?php echo $item['total_sale']; ?></td>
+                <td><?php echo $item['amount']; ?></td>
+                <td><?php echo $item['gst']; ?></td>
+                <td><?php echo $item['total']; ?></td>
             </tr>
         <?php endforeach; ?>
     </tbody>
