@@ -20,6 +20,7 @@ class ReportController extends CI_Controller {
         $this->load->view('stock_report/view', $data);
     }
 	   public function view_transaction_report() {
+		 $data['products'] = $this->ProductModel->getProductList();
         $data['stockReport'] = $this->ReportModel->getTransactionReport(
             $this->input->post('from_date'),
             $this->input->post('to_date'),
